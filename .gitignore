@@ -1,0 +1,30 @@
+# Model file (biasanya besar, sebaiknya tidak masuk git)
+model/*.h5
+model/*.keras
+
+# Upload sementara dari user
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+
+# Flask
+instance/
+.flaskenv
+
+# Environment variables
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

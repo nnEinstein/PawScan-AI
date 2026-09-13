@@ -1,0 +1,257 @@
+:root {
+  --cream: #FFF6E9;
+  --plum: #3A2E39;
+  --coral: #FF8B69;
+  --coral-deep: #F2673F;
+  --sage: #8FAE8B;
+  --sky: #A8D4E0;
+  --card-bg: #FFFFFF;
+  --border-soft: #EEE2CE;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--plum);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.35;
+}
+
+.blob-a {
+  width: 420px;
+  height: 420px;
+  background: var(--sky);
+  top: -140px;
+  right: -120px;
+}
+
+.blob-b {
+  width: 340px;
+  height: 340px;
+  background: var(--sage);
+  bottom: -120px;
+  left: -100px;
+  opacity: 0.28;
+}
+
+.topbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding: 32px 24px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark {
+  font-size: 26px;
+}
+
+.brand-name {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--plum);
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-copy h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.15;
+  margin: 0 0 16px;
+  color: var(--plum);
+}
+
+.sub {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #6B5C68;
+  max-width: 460px;
+  margin: 0 auto 40px;
+}
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: 0 20px 50px -20px rgba(58, 46, 57, 0.25);
+  border: 1px solid var(--border-soft);
+}
+
+.dropzone {
+  border: 2.5px dashed #E8D4B8;
+  border-radius: var(--radius-md);
+  padding: 40px 20px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  background: #FFFCF6;
+}
+
+.dropzone.drag-over {
+  border-color: var(--coral);
+  background: #FFF1E8;
+}
+
+.dz-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.dz-icon {
+  font-size: 40px;
+  margin-bottom: 6px;
+}
+
+.dz-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+
+.dz-hint {
+  font-size: 14px;
+  color: #8A7B85;
+  margin: 0;
+}
+
+.link-text {
+  color: var(--coral-deep);
+  font-weight: 600;
+}
+
+#previewImg {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.scan-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  border: none;
+  border-radius: 100px;
+  background: var(--coral);
+  color: #fff;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.scan-btn:disabled {
+  background: #F3D9C8;
+  cursor: not-allowed;
+}
+
+.scan-btn:not(:disabled):hover {
+  background: var(--coral-deep);
+  transform: translateY(-1px);
+}
+
+.scan-btn:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.result-box {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: #F5FBF3;
+  border: 1px solid #DCEFD6;
+  animation: pop-in 0.35s ease;
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.92) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.result-icon {
+  font-size: 34px;
+}
+
+.result-label {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  color: var(--plum);
+}
+
+.result-confidence {
+  margin: 2px 0 0;
+  font-size: 14px;
+  color: #6B5C68;
+}
+
+.error-box {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: #FDECEA;
+  color: #B3413B;
+  font-size: 14px;
+}
+
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 20px 24px 40px;
+  font-size: 13px;
+  color: #A0937E;
+}
+
+@media (max-width: 480px) {
+  .card { padding: 22px; }
+  .hero { padding-top: 32px; }
+}
