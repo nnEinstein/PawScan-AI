@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PawScan AI — Kucing atau Anjing?</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawScan AI — Kucing atau Anjing?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </head>
 <body>
 
 <div class="scene">
@@ -32,9 +33,12 @@
     <div id="dropzone" class="dropzone">
       <input type="file" id="fileInput" accept=".png,.jpg,.jpeg" hidden>
       <div id="dzIdle" class="dz-state">
-        <div class="dz-icon">🐱🐶</div>
+        <div class="dz-icon">
+          <img class="icon-animal" src="{{ url_for('static', filename='icon/cat.png') }}">
+          <img class="icon-animal" src="{{ url_for('static', filename='icon/shiba.png') }}">
+        </div>
         <p class="dz-title">Seret foto ke sini</p>
-        <p class="dz-hint">atau <span class="link-text">klik untuk pilih file</span> — PNG / JPG</p>
+        <p class="dz-hint">atau <span class="link-text">klik untuk pilih file</span> PNG / JPG</p>
       </div>
 
       <div id="dzPreview" class="dz-state" hidden>
@@ -57,7 +61,25 @@
 </main>
 
 <footer class="footer">
-  <p>Ditenagai model CNN transfer learning (MobileNetV2) — dilatih untuk membedakan kucing dan anjing.</p>
+  <div class="social-links">
+    <a href="https://github.com/USERNAME_KAMU" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/USERNAME_KAMU" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+    <a href="https://instagram.com/USERNAME_KAMU" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/62NOMOR_KAMU" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <a href="https://einsteinahmad.my.id" target="_blank" rel="noopener noreferrer" class="portfolio-btn">
+    Lihat Portofolio Saya
+  </a>
+  <p>Ditenagai model CNN transfer learning (MobileNetV2) dilatih untuk membedakan kucing dan anjing.</p>
 </footer>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>

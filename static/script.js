@@ -95,7 +95,10 @@ scanBtn.addEventListener('click', async () => {
 });
 
 function showResult(label, confidence) {
-  resultIcon.textContent = label === 'Cat' ? '🐱' : '🐶';
+  const iconSrc = label === 'Cat' ? '/static/icon/cat.gif' : '/static/icon/dog.gif';
+  const iconAlt = label === 'Cat' ? 'Ikon kucing' : 'Ikon anjing';
+
+  resultIcon.innerHTML = `<img src="${iconSrc}" alt="${iconAlt}">`;
   resultLabel.textContent = label === 'Cat' ? 'Ini kucing!' : 'Ini anjing!';
   resultConfidence.textContent = `Model yakin ${confidence}%`;
   resultBox.hidden = false;

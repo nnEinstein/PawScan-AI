@@ -154,7 +154,17 @@ html, body {
 .dz-hint {
   font-size: 14px;
   color: #8A7B85;
-  margin: 0;
+  margin-bottom: 2rem;
+}
+
+.icon-animal {
+  width: 40px;
+  height: 40px;
+}
+
+.result-icon img {
+  width: 60px;
+  height: 60px;
 }
 
 .link-text {
@@ -240,6 +250,52 @@ html, body {
   background: #FDECEA;
   color: #B3413B;
   font-size: 14px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: var(--plum);
+  font-size: 18px;
+  border: 1px solid var(--border-soft);
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.social-links a:hover {
+  background: var(--coral);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.portfolio-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 100px;
+  background: var(--plum);
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 12px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.portfolio-btn:hover {
+  background: var(--coral-deep);
+  transform: translateY(-2px);
 }
 
 .footer {
