@@ -63,35 +63,30 @@ scanBtn.addEventListener('click', async () => {
   if (!selectedFile) return;
 
   scanBtn.disabled = true;
-  scanBtn.textContent = 'Menebak...';
+  scanBtn.classList.add('loading');
   hideError();
   hideResult();
 
-  const formData = new FormData();
-  formData.append('file', selectedFile);
+  const btnText = document.getElementById('scanBtnText');
+  if (btnText) btnText.textContent = 'Menebak';
 
   try {
-    const res = await fetch('/predict', {
-      method: 'POST',
-      body: formData
-    });
+    const formData = new FormData();
+    formData.append('file', selectedFile);
 
+    const res = await fetch('/predict', { method: 'POST', body: formData });
     const data = await res.json();
 
     if (!res.ok) {
       showError(data.error || 'Terjadi kesalahan, coba lagi.');
-      scanBtn.disabled = false;
-      scanBtn.textContent = 'Tebak sekarang';
-      return;
+    } else {
+      showResult(data.label, data.confidence);
     }
-
-    showResult(data.label, data.confidence);
   } catch (err) {
     showError('Tidak bisa terhubung ke server. Pastikan server Flask sedang berjalan.');
+  } finally {
+    resetButton();
   }
-
-  scanBtn.disabled = false;
-  scanBtn.textContent = 'Coba foto lain';
 });
 
 function showResult(label, confidence) {
@@ -102,6 +97,13 @@ function showResult(label, confidence) {
   resultLabel.textContent = label === 'Cat' ? 'Ini kucing!' : 'Ini anjing!';
   resultConfidence.textContent = `Model yakin ${confidence}%`;
   resultBox.hidden = false;
+
+  // Progress bar diisi setelah box muncul, biar animasi width kelihatan jalan
+  const fill = document.getElementById('confidenceBarFill');
+  fill.style.width = '0%';
+  requestAnimationFrame(() => {
+    fill.style.width = `${confidence}%`;
+  });
 }
 
 function hideResult() {

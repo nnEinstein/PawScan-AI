@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PawScan AI — Kucing atau Anjing?</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon/cat.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -46,13 +47,18 @@
       </div>
     </div>
 
-    <button id="scanBtn" class="scan-btn" disabled>Tebak sekarang</button>
+    <button id="scanBtn" class="scan-btn" disabled>
+      <span id="scanBtnText">Tebak sekarang</span>
+    </button>
 
     <div id="resultBox" class="result-box" hidden>
       <div id="resultIcon" class="result-icon"></div>
       <div class="result-text">
         <p id="resultLabel" class="result-label"></p>
         <p id="resultConfidence" class="result-confidence"></p>
+        <div class="confidence-bar-track">
+          <div id="confidenceBarFill" class="confidence-bar-fill"></div>
+        </div>
       </div>
     </div>
 
